@@ -28,14 +28,16 @@
       <p class="muted">Deja que el equipo confirme tu consumo y suma tu visita.</p>
       <form id="visit-form">
         <label for="table-number">Número de mesa</label>
-        <div class="table-input"><span class="input-icon">⌁</span><input id="table-number" name="tableNumber" type="number" min="1" max="50" required><span class="input-suffix">MESA</span></div>
-        <label for="customer-id">Teléfono de prueba</label>
-        <div class="select-wrap"><select id="customer-id" name="customerId" required></select></div>
+        <div class="table-input"><span class="input-icon">⌁</span><input id="table-number" name="tableNumber" type="number" readonly placeholder="Escanea el QR de tu mesa"><span class="input-suffix">MESA</span></div>
+        <label for="customer-rut">RUT</label>
+        <div class="select-wrap"><input id="customer-rut" name="rut" autocomplete="off" placeholder="12.345.678-5" required></div>
+        <label for="customer-phone">Número de WhatsApp</label>
+        <div class="select-wrap"><input id="customer-phone" name="phone" type="tel" autocomplete="tel" placeholder="+56 9 1234 5678" required></div>
         <label class="consent-row"><input id="opted-in" type="checkbox"><span class="checkmark"></span><span>Quiero recibir avisos simulados por WhatsApp sobre mis visitas y premios.</span></label>
         <button class="button button-dark button-full" type="submit">Pedir que validen mi visita <span aria-hidden="true">→</span></button>
         <p id="form-message" class="form-message" role="status" aria-live="polite"></p>
       </form>
-      <div class="card-foot"><span class="lock-icon">◇</span> Los números son ficticios y se usan solo en esta demo.</div>
+      <div class="card-foot"><span class="lock-icon">◇</span> El cupón se asociará a tu RUT y número de WhatsApp.</div>
     </section>
   </main>
   <footer class="site-footer"><span>UNA DEMO DE FIDELIDAD PARA <strong>BUENOS MOMENTOS.</strong></span><span>HECHO CON CARIÑO · SANTIAGO</span></footer>

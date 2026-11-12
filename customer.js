@@ -2,32 +2,24 @@ const API_ORIGIN = 'https://cupones-restaurante-demo.jf3t4.chatgpt.site';
 const form = document.querySelector('#visit-form');
 const message = document.querySelector('#form-message');
 const tableInput = document.querySelector('#table-number');
-const customerSelect = document.querySelector('#customer-id');
+const button = form.querySelector('button');
+const tableFromQr = Number(new URLSearchParams(window.location.search).get('mesa'));
+const validTable = Number.isInteger(tableFromQr) && tableFromQr >= 1 && tableFromQr <= 50;
 
-const params = new URLSearchParams(window.location.search);
-const tableFromQr = Number(params.get('mesa'));
-tableInput.value = Number.isInteger(tableFromQr) && tableFromQr > 0 ? tableFromQr : 1;
-
-async function loadCustomers() {
-  const response = await fetch(API_ORIGIN + '/api/customers');
-  const customers = await response.json();
-  for (const customer of customers) {
-    const option = document.createElement('option');
-    option.value = customer.id;
-    option.textContent = `${customer.name} · ${customer.phone}`;
-    customerSelect.append(option);
-  }
+if (validTable) tableInput.value = tableFromQr;
+else {
+  button.disabled = true;
+  message.textContent = 'Escanea el código QR de tu mesa para registrar tu visita.';
 }
 
 form.addEventListener('submit', async event => {
   event.preventDefault();
-  const button = form.querySelector('button');
   button.disabled = true;
   message.textContent = 'Enviando tu solicitud al equipo…';
   try {
     const response = await fetch(API_ORIGIN + '/api/requests', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ tableNumber: Number(tableInput.value), customerId: customerSelect.value, optedIn: document.querySelector('#opted-in').checked }),
+      body: JSON.stringify({ tableNumber: tableFromQr, rut: document.querySelector('#customer-rut').value, phone: document.querySelector('#customer-phone').value, optedIn: document.querySelector('#opted-in').checked }),
     });
     const result = await response.json();
     if (!response.ok) throw new Error(result.error);
@@ -37,5 +29,3 @@ form.addEventListener('submit', async event => {
     button.disabled = false;
   }
 });
-
-loadCustomers().catch(() => { message.textContent = 'No pudimos cargar los teléfonos de prueba. Recarga la página.'; });
