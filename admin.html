@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#17372e">
+  <title>Panel del local · Club de la Mesa</title>
+  <link rel="stylesheet" href="./app.css">
+  <script src="./admin.js" defer></script>
+</head>
+<body class="admin-body">
+  <header class="topbar">
+    <a class="brand" href="./"><span class="brand-mark">cm.</span><span>CLUB DE LA MESA<small>PANEL DEL LOCAL</small></span></a>
+    <a class="quiet-link" href="./">Ver página de clientes <span aria-hidden="true">↗</span></a>
+  </header>
+  <main class="admin-main">
+    <section id="login-panel" class="login-card">
+      <div class="eyebrow"><span class="live-dot"></span> ESPACIO DEL EQUIPO</div>
+      <h1>Hola,<br><em>equipo.</em></h1>
+      <p class="muted">Ingresa la clave de la demo para revisar visitas y premios.</p>
+      <form id="login-form">
+        <label for="admin-key">Clave del panel</label>
+        <input id="admin-key" type="password" autocomplete="current-password" required>
+        <button class="button button-dark button-full" type="submit">Entrar al panel <span aria-hidden="true">→</span></button>
+        <p id="login-message" class="form-message" role="status"></p>
+      </form>
+      <div class="card-foot">Clave configurada por el administrador del local</div>
+    </section>
+
+    <section id="dashboard" hidden>
+      <div class="dashboard-head"><div><div class="eyebrow"><span class="live-dot"></span> VISTA DEL EQUIPO</div><h1>Tu local,<br><em>al día.</em></h1></div><button id="logout" class="button button-outline" type="button">Cerrar sesión</button></div>
+      <div id="stats" class="stats-grid"></div>
+      <div class="admin-grid">
+        <section class="panel-block"><div class="section-heading"><div><span class="section-kicker">01 / VALIDACIÓN</span><h2>Visitas del día</h2></div><span id="pending-count" class="count-pill">0 pendientes</span></div><div id="requests-list" class="request-list"></div></section>
+        <section class="panel-block"><div class="section-heading"><div><span class="section-kicker">02 / PREMIO</span><h2>Canjear almuerzo</h2></div></div><p class="muted">Busca un cliente con premio disponible y confirma su entrega.</p><div id="rewards-list" class="rewards-list"></div></section>
+        <section class="panel-block"><div class="section-heading"><div><span class="section-kicker">03 / BANDEJA SIMULADA</span><h2>Avisos de WhatsApp</h2></div><span class="demo-pill">SOLO DEMO</span></div><div id="notifications-list" class="notifications-list"></div></section>
+        <section class="panel-block qr-block"><div class="section-heading"><div><span class="section-kicker">04 / EN CADA MESA</span><h2>QR de las mesas</h2></div><button id="print-qrs" class="button button-outline" type="button">Imprimir QR</button></div><p class="muted">Escanea desde cualquier celular con internet.</p><div id="qr-grid" class="qr-grid"></div></section>
+      </div>
+      <p id="dashboard-message" class="form-message" role="status" aria-live="polite"></p>
+    </section>
+  </main>
+  <footer class="site-footer"><span>CLUB DE LA MESA <strong>· DEMO ONLINE</strong></span><span id="refresh-note">Datos guardados en la demo</span></footer>
+</body>
+</html>

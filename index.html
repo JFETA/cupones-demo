@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#17372e">
+  <title>Club de la Mesa · Cupones</title>
+  <link rel="stylesheet" href="./app.css">
+  <script src="./customer.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="Club de la Mesa, inicio"><span class="brand-mark">cm.</span><span>CLUB DE LA MESA<small>BUENO VERTE DE NUEVO</small></span></a>
+    <a class="quiet-link" href="./admin.html">Panel del local <span aria-hidden="true">↗</span></a>
+  </header>
+  <main class="customer-layout">
+    <section class="customer-intro">
+      <div class="eyebrow"><span class="live-dot"></span> TU PRÓXIMO ALMUERZO TIENE PREMIO</div>
+      <h1>Las buenas<br><em>mesas</em> se repiten.</h1>
+      <p>Registra tu visita de hoy y sigue avanzando hacia un almuerzo de regalo.</p>
+      <div class="meal-art" aria-hidden="true"><span class="art-small">HECHO<br>PARA VOLVER</span><span class="art-big">buen<br>provecho!</span><span class="plate"><span class="leaf">✳</span></span><span class="art-caption">CADA VISITA CUENTA</span></div>
+      <div class="promise"><span>01</span><span>5 visitas aprobadas = 1 almuerzo gratis</span></div>
+    </section>
+
+    <section class="customer-card" aria-labelledby="form-title">
+      <div class="card-overline">PROGRAMA DE VISITAS <span>01 / 03</span></div>
+      <h2 id="form-title">Tu mesa, tu próxima visita.</h2>
+      <p class="muted">Deja que el equipo confirme tu consumo y suma tu visita.</p>
+      <form id="visit-form">
+        <label for="table-number">Número de mesa</label>
+        <div class="table-input"><span class="input-icon">⌁</span><input id="table-number" name="tableNumber" type="number" min="1" max="50" required><span class="input-suffix">MESA</span></div>
+        <label for="customer-id">Teléfono de prueba</label>
+        <div class="select-wrap"><select id="customer-id" name="customerId" required></select></div>
+        <label class="consent-row"><input id="opted-in" type="checkbox"><span class="checkmark"></span><span>Quiero recibir avisos simulados por WhatsApp sobre mis visitas y premios.</span></label>
+        <button class="button button-dark button-full" type="submit">Pedir que validen mi visita <span aria-hidden="true">→</span></button>
+        <p id="form-message" class="form-message" role="status" aria-live="polite"></p>
+      </form>
+      <div class="card-foot"><span class="lock-icon">◇</span> Los números son ficticios y se usan solo en esta demo.</div>
+    </section>
+  </main>
+  <footer class="site-footer"><span>UNA DEMO DE FIDELIDAD PARA <strong>BUENOS MOMENTOS.</strong></span><span>HECHO CON CARIÑO · SANTIAGO</span></footer>
+</body>
+</html>
